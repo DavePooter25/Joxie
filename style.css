@@ -1,0 +1,224 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ffd1dc, #ffe6e6, #ffc2d1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.hearts-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 24px;
+    opacity: 0.8;
+    animation: floatUp linear infinite;
+    user-select: none;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    border: 3px solid #ff4d6d;
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    color: #ff4d6d;
+    margin-bottom: 30px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    height: 50px;
+    position: relative;
+}
+
+button {
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+#yesBtn {
+    background-color: #ff4d6d;
+    color: white;
+}
+
+#noBtn {
+    background-color: #cccccc;
+    color: #333333;
+}
+
+.celebration {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 40;
+    pointer-events: none;
+}
+
+.celebration.active {
+    display: block;
+}
+
+.book-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 50;
+}
+
+.book-overlay.active {
+    display: flex;
+}
+
+.book {
+    position: relative;
+    width: 420px;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-icon {
+    font-size: 120px;
+    opacity: 1;
+    animation: popIn 0.4s ease-out forwards, closeBookFade 0.4s ease-in 1s forwards;
+}
+
+.book-page {
+    position: absolute;
+    background: linear-gradient(135deg, #fff5f7, #ffe0e6);
+    border: 4px solid #ff4d6d;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(255, 77, 109, 0.5);
+    padding: 35px 30px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.5) rotateY(90deg);
+    animation: openToPage 0.6s ease-out 1.4s forwards;
+}
+
+.book-page p {
+    font-size: 17px;
+    font-weight: 700;
+    color: #ff1f4e;
+    margin: 0;
+    text-align: center;
+    line-height: 1.5;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.2); opacity: 0; }
+    70% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes closeBookFade {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes openToPage {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotateY(90deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotateY(0deg);
+    }
+}
+
+#confettiCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.love-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 14px;
+    font-size: 48px;
+    font-weight: 800;
+    color: #ff1f4e;
+    text-shadow: 0 4px 10px rgba(255, 31, 78, 0.4);
+}
+
+.love-text span {
+    opacity: 0;
+    transform: scale(0.3) translateY(20px);
+    animation: popWord 0.5s forwards;
+}
+
+@keyframes popWord {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(20px);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1.2) translateY(-5px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
